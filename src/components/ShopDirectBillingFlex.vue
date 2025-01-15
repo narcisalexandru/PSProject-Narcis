@@ -20,8 +20,12 @@
                     </div>
                 </ul>
                 <div class="flex flex-row gap-3 mt-4">
-                    <button class="surface-900 text-white font-semibold px-5 py-3 border-none border-round-xl">Shop with Direct Billing</button>
-                    <button class="bg-white text-900 font-semibold px-5 py-3 border-1 border-round-xl">Learn more</button>
+                    <a href="https://www.kits.ca/glasses" target="_blank" rel= "noopener noreferrer">
+                        <button class="surface-900 text-white font-semibold px-5 py-3 border-none border-round-xl hover:surface-700">Shop with Direct Billing</button>
+                    </a>
+                    <a href="https://www.kits.ca/insurance" target="_blank" rel= "noopener noreferrer">
+                        <button class="bg-white text-900 font-semibold px-5 py-3 border-1 border-round-xl hover:surface-900 hover:text-white">Learn more</button>
+                    </a>
                 </div>
             </div>
         </div>
