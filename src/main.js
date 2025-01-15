@@ -1,6 +1,7 @@
 import './assets/main.css'
 import '/node_modules/primeflex/primeflex.css'
 import 'primeflex/themes/primeone-light.css'
+import 'primeicons/primeicons.css'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
