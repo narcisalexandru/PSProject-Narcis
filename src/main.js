@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
+import 'swiper/css/bundle';
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
