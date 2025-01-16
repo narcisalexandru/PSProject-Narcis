@@ -1,6 +1,5 @@
 <template>
     <h1 class="p-8 flex justify-content-center align-items-center">Selecteaza un mod in care vrei sa vezi pagina</h1>
-    <NavbarMenu />
 </template>
 
 <script setup>

@@ -7,7 +7,6 @@ import NavbarMenu from '@/components/NavbarMenu.vue';
 
 <template>
   <div class="">
-    <NavbarMenu />
     <HeaderCarousel />
     <ShopDirectBillingFlex />
   </div>

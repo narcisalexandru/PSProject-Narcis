@@ -6,7 +6,6 @@ import ShopDirectBillingGrid from '@/components/ShopDirectBillingGrid.vue';
 </script>
 
 <template>
-  <NavbarMenu />
   <HeaderCarousel />
   <ShopDirectBillingGrid />
 </template>
