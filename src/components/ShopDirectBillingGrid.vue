@@ -1,7 +1,6 @@
 <template>
-    <div class="grid col-12 p-8 justify-content-center align-items-center">
-        <div class="grid col-6">
-            <div class="row-12">
+    <div class="grid p-8 justify-content-center align-items-center gap-8">
+        <div class="col-6">
                 <span 
                     class="text-green-700 col-2 text-center font-semibold bg-green-50 border-none border-round-3xl px-3 py-2"
                 >
@@ -27,7 +26,7 @@
                             <li class="text-base">Available for prescription glasses and contact lenses</li>
                         </div>
                     </ul>
-                    <div class="flex flex-row gap-3 mt-4">
+                    <div class="flex gap-3 mt-4">
                         <a href="https://www.kits.ca/glasses" target="_blank" rel= "noopener noreferrer">
                             <button class="surface-900 text-white font-semibold px-5 py-3 border-none border-round-xl hover:surface-700">Shop with Direct Billing</button>
                         </a>
@@ -36,9 +35,8 @@
                         </a>
                     </div>
                 </div>
-            </div>
         </div>
-        <div class="grid w-4 col-6">
+        <div class="w-4 col-6">
             <video class="w-full border-none border-round-3xl" autoplay muted loop playsinline>
                 <source src="/Direct-Billing-Video-Desktop.mp4" type="video/mp4">
             </video>
