@@ -12,37 +12,43 @@
                 class="p-inputtext w-full pl-5 h-2rem border-none border-1 border-round-2xl border-grey-300" 
                 placeholder="Type & Hit Enter.." 
                 v-model="searchQuery" 
-                @input="handleInput" 
+                @input="handleInput"
                 />
-                <i class="pi pi-times-circle absolute font-light text-2xl cancel-icon-position"></i>
+                <i @click="clearSearch" class="pi pi-times-circle absolute font-light text-2xl cancel-icon-position"></i>
             </div>
         </form>
       </div>
     </div>
     <!-- Search Results -->
-     <div class="bg-white flex w-full p-8 z-5 absolute overflow-scroll overflow-x-hidden">
-         <div 
-         v-for="product in searchResults"
-         class="flex flex-column gap-4 align-items-center justify-content-center"
-         >
-             <div class="flex w-full search-results-image">
-                 <img class="w-full" :src="product.image_tag" />
-             </div>
-            <div class="flex flex-row pt-2">
-                <div class="font-bold">
-                    {{ product.brand_name }} 
-                </div>
-                <div>
-                    &nbsp;| {{ product.name }}
-                </div>
+    <div
+        v-if="searchResults.length > 0"
+        class="bg-white flex grid p-8 z-5 absolute overflow-scroll overflow-x-hidden"
+    >
+        <div
+            v-for="product in searchResults"
+            class=" col-3 gap-4 text-center"
+        >
+            <div class="pt-2 col-12 search-results-image">
+                <img class="col-12" :src="product.image_tag" />
             </div>
-            <div class="font-bold">
+            <div class="pt-2 col-12 search-results-image">
+                <img class="col-12" :src="product.image" />
+            </div>
+            <div class="col-12">
+                <span class="font-bold">
+                    {{ product.brand_name }} 
+                </span>
+                <span>
+                    &nbsp;| {{ product.name }}
+                </span>
+            </div>
+            <div class="col-12 font-bold">
                 ${{ product.price }}
             </div>
         </div>
      </div>
 </template>
-  
+
 <script setup>
 import { ref } from 'vue';
 import { fetchSearchResults } from '@/services/searchProducts';
@@ -50,11 +56,14 @@ import { fetchSearchResults } from '@/services/searchProducts';
 const searchQuery = ref('');
 const searchResults = ref([]);
 
-
 async function handleInput() {
   const response = await fetchSearchResults(searchQuery.value);
-  searchResults.value = response.response.products;
-  console.log(response.response.products);
+  searchResults.value = response.response.products.filter(product => product.doctype === 'POPULAR_PRODUCTS');
+}
+
+function clearSearch() {
+  searchQuery.value = '';
+  showSearchResults.value = false; // Hide results when cancel icon is clicked
 }
 </script>
   
