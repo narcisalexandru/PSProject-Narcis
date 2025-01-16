@@ -9,13 +9,13 @@ import NavbarMenu from '@/components/NavbarMenu.vue';
  </script>
 
  <style>
-h1 {
+/* h1 {
     animation-name: textShake;
     animation-duration: 1s;
     animation-iteration-count:calc(5/1);
-}
+} */
 
-@keyframes textShake {
+/* @keyframes textShake {
 0% {
 	transform: translate(0);
 }
@@ -49,5 +49,5 @@ h1 {
 100% {
 	transform: translate(0);
 }
-}
+} */
 </style>
