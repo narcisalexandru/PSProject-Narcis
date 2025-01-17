@@ -23,7 +23,7 @@
     <div class="w-full absolute" ref="searchResultsRef">
         <div
             v-if="searchResults.length > 0"
-            class="bg-red-500 grid p-8 z-5 overflow-scroll overflow-x-hidden"
+            class="bg-white grid p-8 z-5 overflow-scroll overflow-x-hidden"
         >
             <div
                 v-for="product in searchResults"

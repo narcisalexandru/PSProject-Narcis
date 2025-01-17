@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import FlexView from '../views/FlexView.vue'
 import GridView from '@/views/GridView.vue'
 import HomeView from '@/views/HomeView.vue'
+import MedsView from '@/views/MedsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/grid',
       name: 'grid',
       component: GridView,
+    },
+    {
+      path: '/meds',
+      name: 'meds',
+      component: MedsView,
     },
   ],
 })
