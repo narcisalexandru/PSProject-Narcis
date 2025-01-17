@@ -20,10 +20,10 @@
       </div>
     </div>
     <!-- Search Results -->
-    <div class="w-full absolute">
+    <div class="w-full absolute" ref="searchResultsRef">
         <div
             v-if="searchResults.length > 0"
-            class="bg-white grid p-8 z-5 overflow-scroll overflow-x-hidden"
+            class="bg-red-500  grid p-8 z-5 overflow-scroll overflow-x-hidden"
         >
             <div
                 v-for="product in searchResults"
@@ -52,11 +52,13 @@
 </template>
 
 <script setup>
-import { onUpdated, ref } from 'vue';
+import { ref } from 'vue';
 import { fetchSearchResults } from '@/services/searchProducts';
+import { useClickOutside } from '@/services/clickOutside';
 
 const searchQuery = ref('');
 const searchResults = ref([]);
+const searchResultsRef = ref(null);
 
 async function handleInput() {
   const response = await fetchSearchResults(searchQuery.value);
@@ -64,11 +66,11 @@ async function handleInput() {
 }
 
 async function clearSearch() {
-  searchQuery.value = '';
-  handleInput();
+    searchQuery.value = '';
+    searchResults.value = [];
 }
+useClickOutside(searchResultsRef, clearSearch);
 </script>
-  
 <style>
 .search-icon-position {
     left: 10px;
