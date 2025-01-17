@@ -1,5 +1,5 @@
 <template>
-    <div class="grid m-8">
+    <div class="hidden lg:flex grid m-8">
         <div class="flex flex-column col-10 mx-auto">
             <div>
                 <h1 class="font-normal mb-6">Compare similar products</h1>

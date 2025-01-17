@@ -1,5 +1,8 @@
 <template>
     <div class="m-5 lg:hidden">
+        <div>
+            <div class="font-normal text-2xl mb-6">Compare similar products</div>
+        </div>
         <Swiper
             :slides-per-view="'auto'"
             :space-between="30"
