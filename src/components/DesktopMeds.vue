@@ -51,8 +51,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="table_title border_bottom_grey">
-                        <div class="mt-6">Price</div>
+                    <td class="table_title ">
+                        <div class="mt-6 border_bottom_grey">Price</div>
                     </td>
                     <td class="table_content" style="background-color:#E9F2FF">
                         <div class="mt-6 border_bottom_grey">
