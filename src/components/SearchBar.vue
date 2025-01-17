@@ -63,7 +63,7 @@ async function handleInput() {
 
 function clearSearch() {
   searchQuery.value = '';
-  showSearchResults.value = false; // Hide results when cancel icon is clicked
+  showSearchResults.value = false;
 }
 </script>
   

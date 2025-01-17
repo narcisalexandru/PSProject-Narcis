@@ -7,8 +7,6 @@ export async function fetchSearchResults(query) {
     const response = await axios.get(BASE_URL, {
       params: {
         q: query,
-        // 'popularProducts.filter': 'v_soldout_uFilter:"0"',
-        // 'popularProducts.filter': 'v_active_uFilter:"1"',
         'version': 'V2',
         'popularProducts.count': 7,
         'variants.relevant': true,
