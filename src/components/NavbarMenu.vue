@@ -40,9 +40,16 @@ const items = ref([
     },
     {
         label: 'Meds',
-        icon: 'pi pi-table',
+        icon: 'pi pi-receipt',
         command: () => {
         router.push('/meds')
+      },
+    },
+    {
+        label: 'grid Meds',
+        icon: 'pi pi-receipt',
+        command: () => {
+        router.push('/grid-meds')
       },
     },
 ]);
