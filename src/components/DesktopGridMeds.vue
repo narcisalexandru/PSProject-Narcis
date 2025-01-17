@@ -1,18 +1,18 @@
 <template>
-    <div class="grid m-5">
-        <div class="flex flex-column mx-auto col-12">
+    <div class="grid m-8">
+        <div class="flex flex-column col-10 mx-auto">
             <div>
                 <h1 class="font-normal">Compare similar products</h1>
             </div>
             <div class="grid mt-2">
-                <div class="col-fixed font-bold flex flex-column align-items-start justify-content-end" style="width: 150px;">
+                <div class="col-1 font-bold flex flex-column justify-content-end">
                     <div class="border_bottom_grey mb-2">Price</div>
                     <div class="border_bottom_grey mb-3">Material</div>
                     <div class="border_bottom_grey mb-2 mt-1">Dk/t (Oxygen Permeability)</div>
                     <div class="border_bottom_grey mb-4 ">Fit</div>
                     <div class="mb-5 mt-1">Best for</div>
                 </div>
-                <div class="col-2" style="background-color: #E9F2FF; border-radius: 16px 16px 16px 16px; padding: 10px;">
+                <div class="custom-col-3" style="background-color: #E9F2FF; border-radius: 16px 16px 16px 16px; padding: 10px;">
                     <div class="flex">
                         <img class="max-w-full" src="/CLKITSDA30_MAIN.webp" />
                     </div>
@@ -23,7 +23,7 @@
                     <div class="border_bottom_grey mt-2">Highly flexibile</div>
                     <div class="mt-2 py-3">Cost effective, all day comfort</div>
                 </div>
-                <div class="col-2">
+                <div class="custom-col-3">
                     <div class="flex">
                         <img class="max-w-full" src="/acuvue_moist.webp" />
                     </div>
@@ -34,7 +34,7 @@
                     <div class="border_bottom_grey mt-2">Flexibile fit</div>
                     <div class="mt-2 py-3">Comfort and ease of use</div>
                 </div>
-                <div class="col-2">
+                <div class="custom-col-3">
                     <div class="flex">
                         <img class="max-w-full" src="/alcon_precision_1.webp" />
                     </div>
@@ -45,7 +45,7 @@
                     <div class="border_bottom_grey mt-2">Flexibile fit</div>
                     <div class="mt-2 py-3">Enhanced comfort for extended daily wear</div>
                 </div>
-                <div class="col-2">
+                <div class="custom-col-3">
                     <div class="flex">
                         <img class="max-w-full" src="/alcon_total1.webp" />
                     </div>
@@ -74,6 +74,6 @@
 .custom-col-3 {
     flex: 0 0 auto;
     padding: 0.5rem;
-    width: 18.34%;
+    width: 22.916675%;
 }
 </style>
