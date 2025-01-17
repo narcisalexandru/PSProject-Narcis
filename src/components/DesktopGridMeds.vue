@@ -7,8 +7,8 @@
             <div class="grid mt-2">
                 <div class="col-1 font-bold flex flex-column justify-content-end">
                     <div class="border_bottom_grey mb-2">Price</div>
-                    <div class="border_bottom_grey mb-3">Material</div>
-                    <div class="border_bottom_grey mb-2 mt-1">Dk/t (Oxygen Permeability)</div>
+                    <div class="border_bottom_grey ">Material</div>
+                    <div class="border_bottom_grey mb-2">Dk/t (Oxygen Permeability)</div>
                     <div class="border_bottom_grey mb-4 ">Fit</div>
                     <div class="mb-5 mt-1">Best for</div>
                 </div>
