@@ -23,32 +23,34 @@
     <div class="w-full absolute" ref="searchResultsRef">
         <div
             v-if="searchResults.length > 0"
-            class="bg-red-500  grid p-8 z-5 overflow-scroll overflow-x-hidden"
+            class="bg-red-500 grid p-8 z-5 overflow-scroll overflow-x-hidden"
         >
             <div
                 v-for="product in searchResults"
-                class="col-3 text-center"
+                class="col-3 flex flex-column align-items-center "
             >
-                <div class="pt-2 col-12 search-results-image">
-                    <img class="col-12" :src="product.image_tag" />
+                <div class="pt-2 search-results-image" v-if="product.product_group === 'Glasses'">
+                    <img class="img-responsive" :src="product.image_tag" />
                 </div>
-                <div class="pt-2 col-12 search-results-image">
-                    <img class="col-12" :src="product.image" />
+                <div class="pt-2  search-results-image" v-if="product.product_group === 'Accessories' || product.product_group === 'Contact Lenses'">
+                    <img class="img-responsive" :src="product.image" />
                 </div>
-                <div class="col-12">
-                    <span class="font-bold">
-                        {{ product.brand_name }} 
+             
+                <div>
+                    <span class="font-bold" v-if="product.brand_name">
+                       aa {{ product.brand_name }}  &nbsp;|
                     </span>
                     <span>
-                        &nbsp;| {{ product.name }}
+                         {{ product.name }}
                     </span>
                 </div>
-                <div class="col-12 font-bold">
+                <div class="font-bold">
                     ${{ product.price }}
                 </div>
             </div>
          </div>
     </div>
+
 </template>
 
 <script setup>
@@ -82,5 +84,9 @@ useClickOutside(searchResultsRef, clearSearch);
 }
 .search-results-image {
     max-width: 320px;
+}
+.img-responsive{
+    max-width: 100%;
+    height: auto;
 }
 </style>
