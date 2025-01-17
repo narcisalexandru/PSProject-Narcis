@@ -20,37 +20,39 @@
       </div>
     </div>
     <!-- Search Results -->
-    <div
-        v-if="searchResults.length > 0"
-        class="bg-white flex grid p-8 z-5 absolute overflow-scroll overflow-x-hidden"
-    >
+    <div class="w-full absolute">
         <div
-            v-for="product in searchResults"
-            class=" col-3 gap-4 text-center"
+            v-if="searchResults.length > 0"
+            class="bg-white grid p-8 z-5 overflow-scroll overflow-x-hidden"
         >
-            <div class="pt-2 col-12 search-results-image">
-                <img class="col-12" :src="product.image_tag" />
+            <div
+                v-for="product in searchResults"
+                class="col-3 text-center"
+            >
+                <div class="pt-2 col-12 search-results-image">
+                    <img class="col-12" :src="product.image_tag" />
+                </div>
+                <div class="pt-2 col-12 search-results-image">
+                    <img class="col-12" :src="product.image" />
+                </div>
+                <div class="col-12">
+                    <span class="font-bold">
+                        {{ product.brand_name }} 
+                    </span>
+                    <span>
+                        &nbsp;| {{ product.name }}
+                    </span>
+                </div>
+                <div class="col-12 font-bold">
+                    ${{ product.price }}
+                </div>
             </div>
-            <div class="pt-2 col-12 search-results-image">
-                <img class="col-12" :src="product.image" />
-            </div>
-            <div class="col-12">
-                <span class="font-bold">
-                    {{ product.brand_name }} 
-                </span>
-                <span>
-                    &nbsp;| {{ product.name }}
-                </span>
-            </div>
-            <div class="col-12 font-bold">
-                ${{ product.price }}
-            </div>
-        </div>
-     </div>
+         </div>
+    </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onUpdated, ref } from 'vue';
 import { fetchSearchResults } from '@/services/searchProducts';
 
 const searchQuery = ref('');
@@ -61,9 +63,9 @@ async function handleInput() {
   searchResults.value = response.response.products.filter(product => product.doctype === 'POPULAR_PRODUCTS');
 }
 
-function clearSearch() {
+async function clearSearch() {
   searchQuery.value = '';
-  showSearchResults.value = false;
+  handleInput();
 }
 </script>
   
