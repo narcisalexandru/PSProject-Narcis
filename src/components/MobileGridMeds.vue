@@ -50,6 +50,9 @@ import { Navigation, Scrollbar } from 'swiper/modules';
 import { SwiperSlide } from 'swiper/vue';
 </script>
 
+<!-- Aici daca folosesc scoped pentru a utiliza style-ul doar pentru acest swiper nu imi mai ia in calcul propietatiile din swiper.css, etc -->
+ <!-- Cum as putea face, sa nu mi se modifice ambele swipere, si sa modific doar cel din componenta? -->
+
 <style>
 .hero-swiper__container:hover .swiper-button-next,
 .hero-swiper__container:hover .swiper-button-prev  {
