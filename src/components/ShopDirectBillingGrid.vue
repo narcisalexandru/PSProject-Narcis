@@ -1,5 +1,5 @@
 <template>
-    <div class="grid p-8 justify-content-center align-items-center gap-8">
+    <div class="grid p-8 mx-auto justify-content-center gap-8">
         <div class="col-6">
                 <span 
                     class="text-green-700 col-2 text-center font-semibold bg-green-50 border-none border-round-3xl px-3 py-2"

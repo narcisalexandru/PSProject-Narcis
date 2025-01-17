@@ -80,6 +80,6 @@ import { SwiperSlide } from 'swiper/vue';
     color: white;
 }
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
-    display: flex !important;
+    display: none !important;
 }
 </style>
