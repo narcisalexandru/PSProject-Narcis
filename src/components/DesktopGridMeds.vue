@@ -2,7 +2,7 @@
     <div class="grid m-8">
         <div class="flex flex-column col-10 mx-auto">
             <div>
-                <h1 class="font-normal">Compare similar products</h1>
+                <h1 class="font-normal mb-6">Compare similar products</h1>
             </div>
             <div class="grid mt-2">
                 <div class="col-1 font-bold flex flex-column justify-content-end">

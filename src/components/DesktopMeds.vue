@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-column w-8 mx-auto mt-8">
+    <div class="hidden lg:flex flex-column w-8 mx-auto mt-8">
         <div class="header_36 flex mb-6">
             Compare similar products
         </div>

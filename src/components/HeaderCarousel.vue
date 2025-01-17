@@ -1,12 +1,12 @@
 <template>
     <div class="m-5">
         <Swiper
-        :slides-per-view="'auto'"
-          :space-between="15"
-          :navigation="true"
-          :scrollbar="{
-            hide: false,
-            draggable: true,
+            :slides-per-view="'auto'"
+            :space-between="15"
+            :navigation="true"
+            :scrollbar="{
+                hide: false,
+                draggable: true,
           }"
           :modules="[Navigation, Scrollbar]"
           class="hero-swiper__container swiper-scrollbar border-round bg-transparent"
