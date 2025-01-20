@@ -1,7 +1,15 @@
 <template>
-    <div class="card flex justify-content-center align-items-center w-full gap-8 mt-8">
-        <Select v-model="selectedQtyL" :options="quantities" optionLabel="label" placeholder="Select a City" class="w-2" />
-        <Select v-model="selectedQtyR" :options="quantities" optionLabel="label" placeholder="Select a City" class="w-2" />
+    <div class="card flex flex-column justify-content-center align-items-center w-full gap-8 mt-8">
+        <div class="flex flex-row gap-8 text-center align-items-center">
+            <Select v-model="selectedQtyL" :options="quantities" optionLabel="label" placeholder="Select quantity" />
+            {{ quantityStore.selectedQtyL }}
+
+
+        </div>
+        <div class="flex flex-row gap-8 text-center align-items-center">
+            <Select v-model="selectedQtyR" :options="quantities" optionLabel="label" placeholder="Select quantity" />
+            {{ quantityStore.selectedQtyR }}
+        </div>
         <ModalQuantity />
     </div>
 </template>

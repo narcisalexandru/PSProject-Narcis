@@ -5,10 +5,10 @@
         <Dialog v-model:visible="visible" modal header="Edit Quantity" :style="{ width: '25rem' }">
             <span class="text-surface-500 dark:text-surface-400 block mb-4">Update your information.</span>
             <div class="flex items-center gap-4 mb-4">
-                <Select v-model="selectedQtyL" :options="quantities" optionLabel="label" placeholder="Select a City" class="w-12" />
+                <Select v-model="selectedQtyL" :options="quantities" optionLabel="label" placeholder="Select quantity" class="w-12" />
             </div>
             <div class="flex items-center gap-4 mb-4">
-                <Select v-model="selectedQtyR" :options="quantities" optionLabel="label" placeholder="Select a City" class="w-12" />
+                <Select v-model="selectedQtyR" :options="quantities" optionLabel="label" placeholder="Select quantity" class="w-12" />
             </div>
             <div class="flex justify-end gap-2">
                 <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
