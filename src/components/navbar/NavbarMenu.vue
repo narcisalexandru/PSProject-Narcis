@@ -52,6 +52,13 @@ const items = ref([
         router.push('/grid-meds')
       },
     },
+    {
+        label: 'Glasses',
+        icon: 'pi pi-receipt',
+        command: () => {
+        router.push('/glasses')
+      },
+    },
 ]);
 </script>
 
