@@ -1,7 +1,7 @@
 <script setup>
 import HeaderCarousel from '@/components/HeaderCarousel.vue';
-import ShopDirectBillingFlex from '../components/ShopDirectBillingFlex.vue';
-import NavbarMenu from '@/components/NavbarMenu.vue';
+import ShopDirectBillingFlex from '../components/directBilling/ShopDirectBillingFlex.vue';
+import NavbarMenu from '@/components/navbar/NavbarMenu.vue';
 
 </script>
 
