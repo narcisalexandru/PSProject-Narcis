@@ -1,15 +1,15 @@
 <template>
-    <div class="m-8">
+    <div class="p-8 mx-5">
         <div class="grid">
-            <div class="col-5 p-8 flex flex-column justify-content-center">
+            <div class="col-6 p-8 flex flex-column justify-content-center">
                 <h1>
                     Not sure where to start?
                 </h1>
                 <div class="">Choosing the right glasses is an investment in yourself. Our curated guides provide expert advice and helpful tips to make your online shopping experience seamless and enjoyable.</div>
             </div>
-            <div class="col-7">
-                <div class="flex">
-                    <div class="col-6 my-auto text-sm mx-auto">
+            <div class="col-6">
+                <div class="grid">
+                    <div class="col-6 text-sm">
                         <a href="https://www.kits.ca/insurance" target="_blank" rel= "noopener noreferrer">
                             <div class="glasses-questions__tile m-2 p-4 flex flex-column align-items-center justify-content-center">
                                 <img src="/shield-with-circled-checkmark.svg"/>

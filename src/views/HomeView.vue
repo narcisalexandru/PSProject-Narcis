@@ -1,4 +1,6 @@
 <template>
+	<HeaderCarousel />
+	<ShopDirectBillingGrid />
 	<WhereToStart />
 </template>
 
