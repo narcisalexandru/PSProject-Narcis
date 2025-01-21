@@ -14,8 +14,8 @@
     <div class="flex flex-column w-full surface-200 p-4 border-round">
       <div class="grid">
         <div class="col-3 flex flex-column p-5">
-          <div class="col">OD<br />(Right)</div>
-          <div class="col">OS<br />(Left)</div>
+          <div class="col">OD<br/>(Right)</div>
+          <div class="col">OS<br/>(Left)</div>
         </div>
         <div class="col-3">
           <div class="col text-sm ml-3">SPH</div>
@@ -76,11 +76,17 @@
         </div>
       </div>
     </div>
-    <Button class="w-full" label="CONTINUE" severity="contrast" />
+    <Button class="w-full" label="CONTINUE" severity="contrast" @click="handleContinue()"/>
   </div>
 </template>
 <script setup>
 import { useGlassesStore } from "@/store/glassesStore";
 
 const glassesStore = useGlassesStore();
+
+function handleContinue() {
+  glassesStore.setOptions(glassesStore.optionSteps["non_prescription_options"]);
+  glassesStore.setTitle(glassesStore.titles["non_prescription_options"]);
+}
+
 </script>

@@ -3,32 +3,19 @@ import { defineStore } from "pinia";
 export const useGlassesStore = defineStore("glassesStore", {
   state: () => ({
     optionSteps: {
-      single_vision_options: [
-        {
-          id: "uv_protection",
-          label: "UV Protection",
-          description: "Blocks harmful UV rays.",
-          image: "/uv_protection.svg",
-        },
-        {
-          id: "blue_light",
-          label: "Blue Light Filter",
-          description: "Reduces blue light strain.",
-          image: "/blue_light_filter.svg",
-        },
-      ],
+      single_vision_options: [{}],
       progressives_options: [
         {
           id: "standard",
           label: "Standard Progressives",
           description: "Affordable and effective.",
-          image: "/standard.svg",
+          image: "/progressives_lenses_standard.svg",
         },
         {
           id: "premium",
-          label: "Premium Progressives",
+          label: "Enhanced Progressives",
           description: "Sharper and wider view.",
-          image: "/premium.svg",
+          image: "/progressives_lenses_standard.svg",
         },
       ],
       readers_options: [
@@ -47,16 +34,28 @@ export const useGlassesStore = defineStore("glassesStore", {
       ],
       non_prescription_options: [
         {
-          id: "standard",
-          label: "Standard Lens",
-          description: "Affordable and effective.",
-          image: "/standard.svg",
+          id: "clear",
+          label: "Clear",
+          description: "Transparent lenses for everyday use.",
+          image: "/Classic.svg",
         },
         {
-          id: "premium",
-          label: "Premium Lens",
-          description: "Sharper and wider view.",
-          image: "/premium.svg",
+          id: "light_transitioning",
+          label: "Light Transitioning",
+          description: "Lenses that adapt to changing light conditions, offering UV protection and glare reduction.",
+          image: "/Light-adaptiveve-Light.svg",
+        },
+        {
+          id: "blue_light_blocking",
+          label: "Blue Light Blocking",
+          description: "Fillters out blue light emitted by digital screens, LED lights, and sunlight and reduces eye strain, fatigue from blue light.",
+          image: "/Blue-Light.svg",
+        },
+        {
+          id: "polarized_sun",
+          label: "Polarized Sun",
+          description: "Reduce glare, improve visual clarity, and enhance color perception.",
+          image: "/Polarized-grey.svg",
         },
       ],
     },
@@ -81,6 +80,14 @@ export const useGlassesStore = defineStore("glassesStore", {
     cylOS: [...Array(6)].map((_, i) => ({ id: `cylOS_${i + 1}`, name: `${i + 1}` })),
     axisOD: [...Array(6)].map((_, i) => ({ id: `axisOD_${i + 1}`, name: `${i + 1}` })),
     axisOS: [...Array(6)].map((_, i) => ({ id: `axisOS_${i + 1}`, name: `${i + 1}` })),
+    finalSelections: {},
+    selectedPds: null,
+    selectedSphOD: null,
+    selectedSphOS: null,
+    selectedCylOD: null,
+    selectedCylOS: null,
+    selectedAxisOD: null,
+    selectedAxisOS: null,
     selectedOptions: [],
     currentTitle: "Choose the type of glasses that you would like",
     currentOptions: [
@@ -118,6 +125,62 @@ export const useGlassesStore = defineStore("glassesStore", {
     visible: false,
   }),
   actions: {
+    saveSelections() {
+      this.finalSelections = {
+        pd: this.selectedPds || { id: "default", name: "0" },
+        sphOD: this.selectedSphOD || { id: "default", name: "0" },
+        sphOS: this.selectedSphOS || { id: "default", name: "0" },
+        cylOD: this.selectedCylOD || { id: "default", name: "0" },
+        cylOS: this.selectedCylOS || { id: "default", name: "0" },
+        axisOD: this.selectedAxisOD || { id: "default", name: "0" },
+        axisOS: this.selectedAxisOS || { id: "default", name: "0" },
+        selectedLens: this.selectedOptions,
+      };
+    },   
+    resetSelections() {
+      this.selectedPds = null;
+      this.selectedSphOD = null;
+      this.selectedSphOS = null;
+      this.selectedCylOD = null;
+      this.selectedCylOS = null;
+      this.selectedAxisOD = null;
+      this.selectedAxisOS = null;
+      this.selectedOptions = [];
+      this.finalSelections = {};
+    },
+    setFinalPageOptions() {
+      this.currentTitle = "Final Selection Summary";
+      this.currentOptions = [];
+    },
+    confirmSave() {
+      console.log("Selections saved:", this.finalSelections);
+      this.visible = false;
+    },
+    cancelSelections() {
+      this.resetSelections();
+      this.visible = false;
+    },
+    setSphOD(value) {
+      this.selectedSphOD = value;
+    },
+    setSphOS(value) {
+      this.selectedSphOS = value;
+    },
+    setCylOD(value) {
+      this.selectedCylOD = value;
+    },
+    setCylOS(value) {
+      this.selectedCylOS = value;
+    },
+    setAxisOD(value) {
+      this.selectedAxisOD = value;
+    },
+    setAxisOS(value) {
+      this.selectedAxisOS = value;
+    },
+    setPd(value) {
+      this.selectedPds = value;
+    },
     setOptions(options) {
       this.history.push([...this.currentOptions]);
       this.currentOptions = options;
@@ -133,9 +196,10 @@ export const useGlassesStore = defineStore("glassesStore", {
       if (this.history.length) {
         this.currentOptions = this.history.pop();
         this.currentTitle = this.titleHistory.pop();
+        this.selectedOptions = this.selectedOptions.slice(0, -1);
       } else {
         this.visible = false;
       }
-    },
+    }
   },
 });

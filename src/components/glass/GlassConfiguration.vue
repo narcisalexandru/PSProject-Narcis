@@ -1,6 +1,4 @@
 <template>
-    <GlassInformation />
-  <!-- modal -->
   <Dialog v-model:visible="glassesStore.visible" modal header=" " class="w-full h-full">
     <div class="flex align-items-center">
       <Button label="Back" @click="handleBack" />
@@ -15,6 +13,21 @@
           <div v-if="glassesStore.currentTitle === 'Enter your pupilary distance'">
               <GlassConfigurationPds />
           </div>
+          <div v-else-if="glassesStore.currentTitle === 'Final Selection Summary'">
+            <div>
+              <h2>Summary of Your Selections</h2>
+              <div><strong>Lens Type:</strong> {{ glassesStore.selectedOptions.map(opt => opt.label).join(', ') }}</div>
+              <div>PD: {{ glassesStore.selectedPds?.name }}</div>
+              <div>SPH (Right): {{ glassesStore.selectedSphOD.name }}</div>
+              <div>SPH (Left):{{ glassesStore.selectedSphOS.name }}</div>
+              <div>CYL (Right): {{ glassesStore.selectedCylOD.name }}</div>
+              <div>CYL (Left):{{ glassesStore.selectedCylOS.name }}</div>
+              <div>AXIS (Right):{{ glassesStore.selectedAxisOD.name }}</div>
+              <div>AXIS (Left):{{ glassesStore.selectedAxisOS.name }}</div>
+            </div>
+            <Button label="Save" @click="handleSave" />
+            <Button label="Cancel" @click="handleCancel" />
+          </div>
           <div v-else>
             <div v-for="option in glassesStore.currentOptions" :key="option.id">
               <Button
@@ -28,8 +41,8 @@
                     <img :src="option.image" class="w-max-full w-full flex" />
                   </div>
                   <div class="w-full">
-                    <div class="w-full flex font-bold">{{ option.label }}</div>
-                    <div class="w-full flex text-700">
+                    <div class="w-full flex text-left font-bold">{{ option.label }}</div>
+                    <div class="w-full flex text-left text-700">
                       {{ option.description }}
                     </div>
                   </div>
@@ -55,14 +68,18 @@ function handleOptionSelect(option) {
     glassesStore.setOptions(nextOptions);
     glassesStore.setTitle(glassesStore.titles[option.next]);
   } else {
-    glassesStore.visible = false;
+    glassesStore.saveSelections();
+    glassesStore.setFinalPageOptions(); 
   }
 }
 
 function handleBack() {
   glassesStore.goBack();
 }
+function handleSave() {
+  glassesStore.confirmSave();
+}
+function handleCancel() {
+  glassesStore.cancelSelections();
+}
 </script>
-
-
-<style scoped></style>
