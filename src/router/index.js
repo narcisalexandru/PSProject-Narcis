@@ -5,7 +5,6 @@ import HomeView from '@/views/HomeView.vue'
 import MedsView from '@/views/MedsView.vue'
 import MedsGridView from '@/views/MedsGridView.vue'
 import GlassView from '@/views/GlassView.vue'
-import GlassConfigView from '@/views/GlassConfigView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,12 +38,6 @@ const router = createRouter({
       path: '/glasses',
       name: 'glasses',
       component: GlassView,
-    },
-    {
-      path: '/glasses/:configuration_id',
-      name: 'glassConfig',
-      component: GlassConfigView,
-      props: true,
     },
   ],
 })

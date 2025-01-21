@@ -1,9 +1,9 @@
 <template>
-    <GlassList />
+    <GlassConfiguration />
 </template>
 
 <script setup>
-import GlassList from '@/components/glass/GlassList.vue';
+import GlassConfiguration from '@/components/glass/GlassConfiguration.vue';
 
 
 </script>
