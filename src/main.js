@@ -1,38 +1,37 @@
-import './assets/main.css'
-import '/node_modules/primeflex/primeflex.css'
-import 'primeflex/themes/primeone-light.css'
-import 'primeicons/primeicons.css'
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/scrollbar';
-import 'swiper/css/bundle';
+import "./assets/main.css";
+import "/node_modules/primeflex/primeflex.css";
+import "primeflex/themes/primeone-light.css";
+import "primeicons/primeicons.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/scrollbar";
+import "swiper/css/bundle";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import PrimeVue from 'primevue/config';
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import PrimeVue from "primevue/config";
 
-import App from './App.vue'
-import router from './router'
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import Aura from '@primevue/themes/aura';
+import App from "./App.vue";
+import router from "./router";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import Aura from "@primevue/themes/aura";
 
+const pinia = createPinia();
+const app = createApp(App);
 
-const pinia = createPinia()
-const app = createApp(App)
-
-app.use(pinia)
-app.use(router)
+app.use(pinia);
+app.use(router);
 app.use(PrimeVue, {
-    theme: {
-        preset: Aura,
-        options: {
-            darkModeSelector: '.my-dark-theme',
-        }
-    }
-})
+  theme: {
+    preset: Aura,
+    options: {
+      darkModeSelector: ".my-dark-theme",
+    },
+  },
+});
 
-app.component('Swiper', Swiper);
-app.component('SwiperSlide', SwiperSlide);
+app.component("Swiper", Swiper);
+app.component("SwiperSlide", SwiperSlide);
 
-app.mount('#app')
+app.mount("#app");

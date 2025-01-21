@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import HeaderCarousel from '@/components/HeaderCarousel.vue';
-import NavbarMenu from '@/components/navbar/NavbarMenu.vue';
-import ShopDirectBillingGrid from '@/components/directBilling/ShopDirectBillingGrid.vue';
-
+import HeaderCarousel from "@/components/HeaderCarousel.vue";
+import NavbarMenu from "@/components/navbar/NavbarMenu.vue";
+import ShopDirectBillingGrid from "@/components/directBilling/ShopDirectBillingGrid.vue";
 </script>
 
 <template>
@@ -10,6 +9,4 @@ import ShopDirectBillingGrid from '@/components/directBilling/ShopDirectBillingG
   <ShopDirectBillingGrid />
 </template>
 
-<style>
-
-</style>
+<style></style>

@@ -1,84 +1,68 @@
 <template>
-    <div class="flex justify-content-center m-8">
-        <div class="grid border-1">
-            <div class="col-6">
-                <img src="/81000005390_IMG.webp" class="w-max-full w-full" />
-            </div>
-            <div class="col-6">
-                <div class="col-12 justify-content-center">
-                    <div>KITS Fir</div>
-                    <div>$28</div>
-                    <Button @click="visible = true" label="Select Lenses" severity="contrast" />
-                </div>
-            </div>
-        </div>
+    <GlassInformation />
+  <!-- modal -->
+  <Dialog v-model:visible="glassesStore.visible" modal header=" " class="w-full h-full">
+    <div class="flex align-items-center">
+      <Button label="Back" @click="handleBack" />
     </div>
-    <!-- modal -->
-    <Dialog v-model:visible="visible" modal header=" " class=" w-full h-full">
-        <div class="flex">
-            <div class="w-6 p-8">
-                <img src="/81000005390_IMG.webp" class="w-max-full w-full h-full" />
-            </div>
-            <div class="w-6">
-                <div class="flex flex-column gap-2">
-                    <h1 class="font-bold mb-6">Choose the type of glasses that you would like</h1>
-                    <Button class="bg-white text-900 border-none" @click="doSomething()">
-                        <div class="border-round w-full shadow-4 flex align-items-center justify-content-start">
-                            <div class="mx-6 my-4 w-2">
-                                <img src="/clear_lenses.svg" class="w-max-full w-full flex" />
-                            </div>
-                            <div class="w-full">
-                                <div class="w-full flex font-bold">Single Vision</div>
-                                <div class="w-full flex text-700">Corrects for one field of vision (near, itermediate or far).</div>
-                            </div>
-                        </div>
-                    </Button>
-                    <Button class="bg-white text-900 border-none" @click="doSomething()">
-                        <div class="border-round w-full shadow-4 flex align-items-center justify-content-start">
-                            <div class="mx-6 my-4 w-2">
-                                <img src="/progressives_lenses_standard.svg" class="w-max-full w-full flex" />
-                            </div>
-                            <div class="w-full">
-                                <div class="w-full flex font-bold">Progressives</div>
-                                <div class="w-full text-left text-700">Corrects near, itermediate, and for fields of vision in one lens so you don't have tp switch between multiple pairs.</div>
-                            </div>
-                        </div>
-                    </Button>
-                    <Button class="bg-white text-900 border-none" @click="doSomething()">
-                        <div class="border-round w-full shadow-4 flex align-items-center justify-content-start">
-                            <div class="mx-6 my-4 w-2">
-                                <img src="/reading_lenses.svg" class="w-max-full w-full flex" />
-                            </div>
-                            <div class="w-full">
-                                <div class="w-full flex font-bold">Readers</div>
-                                <div class="w-full flex text-700">Offers simple magnification for reading.</div>
-                            </div>
-                        </div>
-                    </Button>
-                    <Button class="bg-white text-900 border-none" @click="doSomething()">
-                        <div class="border-round w-full shadow-4 flex align-items-center justify-content-start">
-                            <div class="mx-6 my-3 w-2">
-                                <img src="/Classic.svg" class="w-max-full w-full flex" />
-                            </div>
-                            <div class="w-full">
-                                <div class="w-full flex font-bold">Non-Prescription</div>
-                                <div class="w-full flex text-700">Lens with no vision correction</div>
-                            </div>
-                        </div>
-                    </Button>
+    <div class="flex">
+      <div class="w-6 p-8">
+        <img src="/81000005390_IMG.webp" class="w-max-full w-full h-full" />
+      </div>
+      <div class="w-6">
+        <div class="flex flex-column gap-2">
+          <h1 class="font-bold mb-6">{{ glassesStore.currentTitle }}</h1>
+          <div v-if="glassesStore.currentTitle === 'Enter your pupilary distance'">
+              <GlassConfigurationPds />
+          </div>
+          <div v-else>
+            <div v-for="option in glassesStore.currentOptions" :key="option.id">
+              <Button
+                class="bg-white text-900 border-none w-full"
+                @click="handleOptionSelect(option)"
+              >
+                <div
+                  class="border-round w-full shadow-4 flex align-items-center justify-content-start"
+                >
+                  <div class="mx-6 my-4 w-2">
+                    <img :src="option.image" class="w-max-full w-full flex" />
+                  </div>
+                  <div class="w-full">
+                    <div class="w-full flex font-bold">{{ option.label }}</div>
+                    <div class="w-full flex text-700">
+                      {{ option.description }}
+                    </div>
+                  </div>
                 </div>
+              </Button>
             </div>
-
+          </div>
         </div>
-    </Dialog>
+      </div>
+    </div>
+  </Dialog>
 </template>
+
 <script setup>
+import { useGlassesStore } from "@/store/glassesStore";
 
-import { ref } from 'vue';
+const glassesStore = useGlassesStore();
 
-const visible = ref(false)
+function handleOptionSelect(option) {
+  glassesStore.addOption(option);
+  const nextOptions = glassesStore.optionSteps[option.next] || [];
+  if (nextOptions.length) {
+    glassesStore.setOptions(nextOptions);
+    glassesStore.setTitle(glassesStore.titles[option.next]);
+  } else {
+    glassesStore.visible = false;
+  }
+}
 
+function handleBack() {
+  glassesStore.goBack();
+}
 </script>
 
-<style scoped>
-</style>
+
+<style scoped></style>

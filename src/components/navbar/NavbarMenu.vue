@@ -1,64 +1,68 @@
 <template>
-    <div class="flex justify-content-center align-items-center w-full">
-        <Menubar :model="items" >
-            <template #start>
-              <a href="https://pixelsolutions.ro" target="_blank">
-                <img alt="logo" src="/logo-pixel-solutions.svg" height="20" class="m-2" />
-              </a>
-            </template>
-        </Menubar>
-    </div>
+  <div class="flex justify-content-center align-items-center w-full">
+    <Menubar :model="items">
+      <template #start>
+        <a href="https://pixelsolutions.ro" target="_blank">
+          <img
+            alt="logo"
+            src="/logo-pixel-solutions.svg"
+            height="20"
+            class="m-2"
+          />
+        </a>
+      </template>
+    </Menubar>
+  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
-const router = useRouter()
+const router = useRouter();
 
 const items = ref([
-    {
-        label: 'Home',
-        icon: 'pi pi-home',
-        command: () => {
-        router.push('/')
-      },
+  {
+    label: "Home",
+    icon: "pi pi-home",
+    command: () => {
+      router.push("/");
     },
-    {
-        label: 'Flex',
-        icon: 'pi pi-th-large',
-        command: () => {
-        router.push('/flex')
-      },
+  },
+  {
+    label: "Flex",
+    icon: "pi pi-th-large",
+    command: () => {
+      router.push("/flex");
     },
-    {
-        label: 'Grid',
-        icon: 'pi pi-table',
-        command: () => {
-        router.push('/grid')
-      },
+  },
+  {
+    label: "Grid",
+    icon: "pi pi-table",
+    command: () => {
+      router.push("/grid");
     },
-    {
-        label: 'Meds',
-        icon: 'pi pi-receipt',
-        command: () => {
-        router.push('/meds')
-      },
+  },
+  {
+    label: "Meds",
+    icon: "pi pi-receipt",
+    command: () => {
+      router.push("/meds");
     },
-    {
-        label: 'grid Meds',
-        icon: 'pi pi-receipt',
-        command: () => {
-        router.push('/grid-meds')
-      },
+  },
+  {
+    label: "grid Meds",
+    icon: "pi pi-receipt",
+    command: () => {
+      router.push("/grid-meds");
     },
-    {
-        label: 'Glasses',
-        icon: 'pi pi-receipt',
-        command: () => {
-        router.push('/glasses')
-      },
+  },
+  {
+    label: "Glasses",
+    icon: "pi pi-receipt",
+    command: () => {
+      router.push("/glasses");
     },
+  },
 ]);
 </script>
-
