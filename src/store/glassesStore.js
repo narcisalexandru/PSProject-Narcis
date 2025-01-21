@@ -42,19 +42,22 @@ export const useGlassesStore = defineStore("glassesStore", {
         {
           id: "light_transitioning",
           label: "Light Transitioning",
-          description: "Lenses that adapt to changing light conditions, offering UV protection and glare reduction.",
+          description:
+            "Lenses that adapt to changing light conditions, offering UV protection and glare reduction.",
           image: "/Light-adaptiveve-Light.svg",
         },
         {
           id: "blue_light_blocking",
           label: "Blue Light Blocking",
-          description: "Fillters out blue light emitted by digital screens, LED lights, and sunlight and reduces eye strain, fatigue from blue light.",
+          description:
+            "Fillters out blue light emitted by digital screens, LED lights, and sunlight and reduces eye strain, fatigue from blue light.",
           image: "/Blue-Light.svg",
         },
         {
           id: "polarized_sun",
           label: "Polarized Sun",
-          description: "Reduce glare, improve visual clarity, and enhance color perception.",
+          description:
+            "Reduce glare, improve visual clarity, and enhance color perception.",
           image: "/Polarized-grey.svg",
         },
       ],
@@ -74,12 +77,30 @@ export const useGlassesStore = defineStore("glassesStore", {
       { id: "pd_62.0", name: "62.0" },
       { id: "pd_62.5", name: "62.5" },
     ],
-    sphOD: [...Array(6)].map((_, i) => ({ id: `sphOD_${i + 1}`, name: `${i + 1}` })),
-    sphOS: [...Array(6)].map((_, i) => ({ id: `sphOS_${i + 1}`, name: `${i + 1}` })),
-    cylOD: [...Array(6)].map((_, i) => ({ id: `cylOD_${i + 1}`, name: `${i + 1}` })),
-    cylOS: [...Array(6)].map((_, i) => ({ id: `cylOS_${i + 1}`, name: `${i + 1}` })),
-    axisOD: [...Array(6)].map((_, i) => ({ id: `axisOD_${i + 1}`, name: `${i + 1}` })),
-    axisOS: [...Array(6)].map((_, i) => ({ id: `axisOS_${i + 1}`, name: `${i + 1}` })),
+    sphOD: [...Array(6)].map((_, i) => ({
+      id: `sphOD_${i + 1}`,
+      name: `${i + 1}`,
+    })),
+    sphOS: [...Array(6)].map((_, i) => ({
+      id: `sphOS_${i + 1}`,
+      name: `${i + 1}`,
+    })),
+    cylOD: [...Array(6)].map((_, i) => ({
+      id: `cylOD_${i + 1}`,
+      name: `${i + 1}`,
+    })),
+    cylOS: [...Array(6)].map((_, i) => ({
+      id: `cylOS_${i + 1}`,
+      name: `${i + 1}`,
+    })),
+    axisOD: [...Array(6)].map((_, i) => ({
+      id: `axisOD_${i + 1}`,
+      name: `${i + 1}`,
+    })),
+    axisOS: [...Array(6)].map((_, i) => ({
+      id: `axisOS_${i + 1}`,
+      name: `${i + 1}`,
+    })),
     finalSelections: null,
     selectedPds: null,
     selectedSphOD: null,
@@ -94,7 +115,8 @@ export const useGlassesStore = defineStore("glassesStore", {
       {
         id: "single_vision",
         label: "Single Vision",
-        description: "Corrects for one field of vision (near, intermediate, or far).",
+        description:
+          "Corrects for one field of vision (near, intermediate, or far).",
         image: "/clear_lenses.svg",
         next: "single_vision_options",
       },
@@ -128,7 +150,7 @@ export const useGlassesStore = defineStore("glassesStore", {
     saveSelections() {
       this.finalSelections = {
         pd: this.selectedPds || { name: "0" },
-        sphOD: this.selectedSphOD || {  name: "0" },
+        sphOD: this.selectedSphOD || { name: "0" },
         sphOS: this.selectedSphOS || { name: "0" },
         cylOD: this.selectedCylOD || { name: "0" },
         cylOS: this.selectedCylOS || { name: "0" },
@@ -136,7 +158,7 @@ export const useGlassesStore = defineStore("glassesStore", {
         axisOS: this.selectedAxisOS || { name: "0" },
         selectedLens: this.selectedOptions,
       };
-    },   
+    },
     resetSelections() {
       this.selectedOptions = [];
       this.selectedPds = null;
@@ -147,35 +169,37 @@ export const useGlassesStore = defineStore("glassesStore", {
       this.selectedAxisOD = null;
       this.selectedAxisOS = null;
       this.finalSelections = null;
-      this.currentTitle = 'Choose the type of glasses that you would like';
+      this.currentTitle = "Choose the type of glasses that you would like";
       this.currentOptions = [
         {
-            id: "single_vision",
-            label: "Single Vision",
-            description: "Corrects for one field of vision (near, intermediate, or far).",
-            image: "/clear_lenses.svg",
-            next: "single_vision_options",
+          id: "single_vision",
+          label: "Single Vision",
+          description:
+            "Corrects for one field of vision (near, intermediate, or far).",
+          image: "/clear_lenses.svg",
+          next: "single_vision_options",
         },
         {
-            id: "progressives",
-            label: "Progressives",
-            description: "Corrects near, intermediate, and far vision in one lens.",
-            image: "/progressives_lenses_standard.svg",
-            next: "progressives_options",
+          id: "progressives",
+          label: "Progressives",
+          description:
+            "Corrects near, intermediate, and far vision in one lens.",
+          image: "/progressives_lenses_standard.svg",
+          next: "progressives_options",
         },
         {
-            id: "Readers",
-            label: "Readers",
-            description: "Offers simple magnification for reading.",
-            image: "/reading_lenses.svg",
-            next: "readers_options",
+          id: "Readers",
+          label: "Readers",
+          description: "Offers simple magnification for reading.",
+          image: "/reading_lenses.svg",
+          next: "readers_options",
         },
         {
-            id: "Non-Prescription",
-            label: "Non-Prescription",
-            description: "Lens with no vision correction",
-            image: "/Classic.svg",
-            next: "non_prescription_options",
+          id: "Non-Prescription",
+          label: "Non-Prescription",
+          description: "Lens with no vision correction",
+          image: "/Classic.svg",
+          next: "non_prescription_options",
         },
       ];
     },
@@ -231,6 +255,6 @@ export const useGlassesStore = defineStore("glassesStore", {
       } else {
         this.visible = false;
       }
-    }
+    },
   },
 });

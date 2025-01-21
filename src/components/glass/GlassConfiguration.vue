@@ -1,8 +1,13 @@
 <template>
-  <Dialog v-model:visible="glassesStore.visible" modal header=" " class="w-full h-full">
+  <Dialog
+    v-model:visible="glassesStore.visible"
+    modal
+    header=" "
+    class="w-full h-full"
+  >
     <template #header>
       <div class="flex align-items-center">
-        <Button label="Back" @click="handleBack"  severity="contrast" />
+        <Button label="Back" @click="handleBack" severity="contrast" />
       </div>
     </template>
     <div class="flex">
@@ -12,8 +17,10 @@
       <div class="w-6">
         <div class="flex flex-column gap-2">
           <h1 class="font-bold mb-6">{{ glassesStore.currentTitle }}</h1>
-          <div v-if="glassesStore.currentTitle === 'Enter your pupilary distance'">
-              <GlassConfigurationPds />
+          <div
+            v-if="glassesStore.currentTitle === 'Enter your pupilary distance'"
+          >
+            <GlassConfigurationPds />
           </div>
           <div v-else-if="glassesStore.currentTitle === 'Summary'">
             <div>
@@ -33,7 +40,9 @@
                     <img :src="option.image" class="w-max-full w-full flex" />
                   </div>
                   <div class="w-full">
-                    <div class="w-full flex text-left font-bold">{{ option.label }}</div>
+                    <div class="w-full flex text-left font-bold">
+                      {{ option.label }}
+                    </div>
                     <div class="w-full flex text-left text-700">
                       {{ option.description }}
                     </div>
@@ -63,7 +72,7 @@ function handleOptionSelect(option) {
     glassesStore.setTitle(glassesStore.titles[option.next]);
   } else {
     glassesStore.saveSelections();
-    glassesStore.setFinalPageOptions(); 
+    glassesStore.setFinalPageOptions();
   }
 }
 
