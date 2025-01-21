@@ -80,7 +80,7 @@ export const useGlassesStore = defineStore("glassesStore", {
     cylOS: [...Array(6)].map((_, i) => ({ id: `cylOS_${i + 1}`, name: `${i + 1}` })),
     axisOD: [...Array(6)].map((_, i) => ({ id: `axisOD_${i + 1}`, name: `${i + 1}` })),
     axisOS: [...Array(6)].map((_, i) => ({ id: `axisOS_${i + 1}`, name: `${i + 1}` })),
-    finalSelections: {},
+    finalSelections: null,
     selectedPds: null,
     selectedSphOD: null,
     selectedSphOS: null,
@@ -127,17 +127,18 @@ export const useGlassesStore = defineStore("glassesStore", {
   actions: {
     saveSelections() {
       this.finalSelections = {
-        pd: this.selectedPds || { id: "default", name: "0" },
-        sphOD: this.selectedSphOD || { id: "default", name: "0" },
-        sphOS: this.selectedSphOS || { id: "default", name: "0" },
-        cylOD: this.selectedCylOD || { id: "default", name: "0" },
-        cylOS: this.selectedCylOS || { id: "default", name: "0" },
-        axisOD: this.selectedAxisOD || { id: "default", name: "0" },
-        axisOS: this.selectedAxisOS || { id: "default", name: "0" },
+        pd: this.selectedPds || { name: "0" },
+        sphOD: this.selectedSphOD || {  name: "0" },
+        sphOS: this.selectedSphOS || { name: "0" },
+        cylOD: this.selectedCylOD || { name: "0" },
+        cylOS: this.selectedCylOS || { name: "0" },
+        axisOD: this.selectedAxisOD || { name: "0" },
+        axisOS: this.selectedAxisOS || { name: "0" },
         selectedLens: this.selectedOptions,
       };
     },   
     resetSelections() {
+      this.selectedOptions = [];
       this.selectedPds = null;
       this.selectedSphOD = null;
       this.selectedSphOS = null;
@@ -145,11 +146,41 @@ export const useGlassesStore = defineStore("glassesStore", {
       this.selectedCylOS = null;
       this.selectedAxisOD = null;
       this.selectedAxisOS = null;
-      this.selectedOptions = [];
-      this.finalSelections = {};
+      this.finalSelections = null;
+      this.currentTitle = 'Choose the type of glasses that you would like';
+      this.currentOptions = [
+        {
+            id: "single_vision",
+            label: "Single Vision",
+            description: "Corrects for one field of vision (near, intermediate, or far).",
+            image: "/clear_lenses.svg",
+            next: "single_vision_options",
+        },
+        {
+            id: "progressives",
+            label: "Progressives",
+            description: "Corrects near, intermediate, and far vision in one lens.",
+            image: "/progressives_lenses_standard.svg",
+            next: "progressives_options",
+        },
+        {
+            id: "Readers",
+            label: "Readers",
+            description: "Offers simple magnification for reading.",
+            image: "/reading_lenses.svg",
+            next: "readers_options",
+        },
+        {
+            id: "Non-Prescription",
+            label: "Non-Prescription",
+            description: "Lens with no vision correction",
+            image: "/Classic.svg",
+            next: "non_prescription_options",
+        },
+      ];
     },
     setFinalPageOptions() {
-      this.currentTitle = "Final Selection Summary";
+      this.currentTitle = "Summary";
       this.currentOptions = [];
     },
     confirmSave() {

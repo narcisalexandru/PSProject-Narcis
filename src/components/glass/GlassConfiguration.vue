@@ -1,8 +1,10 @@
 <template>
   <Dialog v-model:visible="glassesStore.visible" modal header=" " class="w-full h-full">
-    <div class="flex align-items-center">
-      <Button label="Back" @click="handleBack" />
-    </div>
+    <template #header>
+      <div class="flex align-items-center">
+        <Button label="Back" @click="handleBack"  severity="contrast" />
+      </div>
+    </template>
     <div class="flex">
       <div class="w-6 p-8">
         <img src="/81000005390_IMG.webp" class="w-max-full w-full h-full" />
@@ -13,20 +15,10 @@
           <div v-if="glassesStore.currentTitle === 'Enter your pupilary distance'">
               <GlassConfigurationPds />
           </div>
-          <div v-else-if="glassesStore.currentTitle === 'Final Selection Summary'">
+          <div v-else-if="glassesStore.currentTitle === 'Summary'">
             <div>
-              <h2>Summary of Your Selections</h2>
-              <div><strong>Lens Type:</strong> {{ glassesStore.selectedOptions.map(opt => opt.label).join(', ') }}</div>
-              <div>PD: {{ glassesStore.selectedPds?.name }}</div>
-              <div>SPH (Right): {{ glassesStore.selectedSphOD.name }}</div>
-              <div>SPH (Left):{{ glassesStore.selectedSphOS.name }}</div>
-              <div>CYL (Right): {{ glassesStore.selectedCylOD.name }}</div>
-              <div>CYL (Left):{{ glassesStore.selectedCylOS.name }}</div>
-              <div>AXIS (Right):{{ glassesStore.selectedAxisOD.name }}</div>
-              <div>AXIS (Left):{{ glassesStore.selectedAxisOS.name }}</div>
+              <GlassSummary />
             </div>
-            <Button label="Save" @click="handleSave" />
-            <Button label="Cancel" @click="handleCancel" />
           </div>
           <div v-else>
             <div v-for="option in glassesStore.currentOptions" :key="option.id">
@@ -58,6 +50,8 @@
 
 <script setup>
 import { useGlassesStore } from "@/store/glassesStore";
+import GlassSummary from "./GlassSummary.vue";
+import GlassConfigurationPds from "./GlassConfigurationPds.vue";
 
 const glassesStore = useGlassesStore();
 
@@ -75,11 +69,5 @@ function handleOptionSelect(option) {
 
 function handleBack() {
   glassesStore.goBack();
-}
-function handleSave() {
-  glassesStore.confirmSave();
-}
-function handleCancel() {
-  glassesStore.cancelSelections();
 }
 </script>
