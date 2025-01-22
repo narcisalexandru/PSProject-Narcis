@@ -39,10 +39,11 @@
           <div v-else>
             <div v-for="option in glassesStore.currentOptions" :key="option.id">
               <Button
-                class="bg-white text-900 border-none w-full"
+                class="bg-white text-900 w-full border-none"
                 @click="handleOptionSelect(option)"
-              >
+                >
                 <div
+                  :class="{ 'selected-option': glassesStore.selectedOptionId[glassesStore.currentTitle] === option.id }"
                   class="border-round w-full shadow-4 flex align-items-center justify-content-start"
                 >
                   <div class="mx-6 my-4 w-2">
@@ -75,6 +76,7 @@ const glassesStore = useGlassesStore();
 
 function handleOptionSelect(option) {
   glassesStore.addOption(option);
+  glassesStore.setSelectedOptionId(glassesStore.currentTitle, option.id);
 
   if (option.id === "progressives") {
     glassesStore.setOptions(glassesStore.optionSteps.progressives_options);
@@ -95,6 +97,24 @@ function handleOptionSelect(option) {
 }
 
 function handleBack() {
-  glassesStore.goBack();
+  if (glassesStore.history.length) {
+    const previousOptions = glassesStore.history.pop();
+    const previousTitle = glassesStore.titleHistory.pop();
+    if (glassesStore.selectedOptionId[previousTitle]) {
+      glassesStore.selectedOptionId[previousTitle] = glassesStore.selectedOptionId[previousTitle];
+    }
+    glassesStore.currentOptions = previousOptions;
+    glassesStore.currentTitle = previousTitle;
+    glassesStore.selectedOptions = glassesStore.selectedOptions.slice(0, -1);
+  } else {
+    glassesStore.visible = false;
+  }
 }
+
 </script>
+
+<style>
+.selected-option {
+  border-top: 4px solid black !important;
+}
+</style>

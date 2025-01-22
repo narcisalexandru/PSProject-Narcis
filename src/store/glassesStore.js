@@ -154,8 +154,12 @@ export const useGlassesStore = defineStore("glassesStore", {
     history: [],
     titleHistory: [],
     visible: false,
+    selectedOptionId: {},
   }),
   actions: {
+    setSelectedOptionId(step, optionId) {
+      this.selectedOptionId[step] = optionId;     
+    },
     saveSelections() {
       this.finalSelections = {
         pd: this.selectedPds || { name: "0" },
@@ -217,7 +221,6 @@ export const useGlassesStore = defineStore("glassesStore", {
       this.currentOptions = [];
     },
     confirmSave() {
-      console.log("Selections saved:", this.finalSelections);
       this.visible = false;
     },
     cancelSelections() {
@@ -254,12 +257,16 @@ export const useGlassesStore = defineStore("glassesStore", {
       this.currentTitle = title;
     },
     addOption(option) {
+      this.selectedOptions = this.selectedOptions.filter(
+        (opt) => opt.step !== option.step
+      );
       this.selectedOptions.push(option);
     },
     goBack() {
       if (this.history.length) {
         this.currentOptions = this.history.pop();
         this.currentTitle = this.titleHistory.pop();
+        delete this.selectedOptionId[this.currentTitle];
         this.selectedOptions = this.selectedOptions.slice(0, -1);
       } else {
         this.visible = false;
