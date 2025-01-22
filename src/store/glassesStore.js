@@ -182,6 +182,7 @@ export const useGlassesStore = defineStore("glassesStore", {
       this.selectedAxisOD = null;
       this.selectedAxisOS = null;
       this.finalSelections = null;
+      this.selectedOptionId = {};
       this.currentTitle = "Choose the type of glasses that you would like";
       this.currentOptions = [
         {
