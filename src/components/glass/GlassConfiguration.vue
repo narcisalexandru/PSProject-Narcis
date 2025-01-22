@@ -12,7 +12,16 @@
     </template>
     <div class="flex">
       <div class="w-6 p-8">
-        <img src="/81000005390_IMG.webp" class="w-max-full w-full h-full" />
+        <div class="flex justify-content-center font-bold text-3xl">KITS</div>
+        <img src="/81000005390_IMG.webp" class="w-max-full w-full" />
+        <div class="flex flex-row justify-content-center">
+          <div class="flex font-bold text-2xl">KITS | &nbsp; </div>
+          <div class="flex text-2xl">Fir</div>
+        </div>
+        <div class="flex flex-row justify-content-center mt-2">
+          <div class="text-xl">Frame price:&nbsp;</div>
+          <div class="flex font-bold text-xl">$28</div>
+        </div>
       </div>
       <div class="w-6">
         <div class="flex flex-column gap-2">
