@@ -66,9 +66,18 @@ const glassesStore = useGlassesStore();
 
 function handleOptionSelect(option) {
   glassesStore.addOption(option);
-  const nextOptions = glassesStore.optionSteps[option.next] || [];
-  if (nextOptions.length) {
-    glassesStore.setOptions(nextOptions);
+
+  if (option.id === "progressives") {
+    glassesStore.setOptions(glassesStore.optionSteps.progressives_options);
+    glassesStore.setTitle(glassesStore.titles.progressives_options);
+  } else if (option.id === "readers") {
+    glassesStore.setOptions(glassesStore.optionSteps.readers_options);
+    glassesStore.setTitle(glassesStore.titles.readers_options);
+  } else if (option.next === "progressives_pds" || option.next === "readers_pds") {
+    glassesStore.setOptions(glassesStore.optionSteps[option.next]);
+    glassesStore.setTitle(glassesStore.titles[option.next]);
+  } else if (option.next) {
+    glassesStore.setOptions(glassesStore.optionSteps[option.next]);
     glassesStore.setTitle(glassesStore.titles[option.next]);
   } else {
     glassesStore.saveSelections();
