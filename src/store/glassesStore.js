@@ -56,8 +56,9 @@ export const useGlassesStore = defineStore("glassesStore", {
           id: "blue_light_blocking",
           label: "Blue Light Blocking",
           description:
-            "Fillters out blue light emitted by digital screens, LED lights, and sunlight and reduces eye strain, fatigue from blue light.",
+            "Filters out blue light emitted by digital screens, LED lights, and sunlight and reduces eye strain, fatigue from blue light.",
           image: "/Blue-Light.svg",
+          next: "blue_light_blocking_options",
         },
         {
           id: "polarized_sun",
@@ -65,6 +66,20 @@ export const useGlassesStore = defineStore("glassesStore", {
           description:
             "Reduce glare, improve visual clarity, and enhance color perception.",
           image: "/Polarized-grey.svg",
+        },
+      ],
+      blue_light_blocking_options: [
+        {
+          id: "blue_light_blocking_plus",
+          label: "Blue Light Blocking Plus",
+          description: "Fillters out blue light emitted by digital screens, LED lights, and sunlight and reduces eye strain, fatigue from blue light.",
+          image: "/Blue-Light.svg",
+        },
+        {
+          id: "blue_light_blocking",
+          label: "Blue Light Blocking",
+          description: "Standard protection from blue light emitted by electronic devices.",
+          image: "/Blue-Light.svg",
         },
       ],
     },
@@ -110,6 +125,7 @@ export const useGlassesStore = defineStore("glassesStore", {
       id: `axisOS_${i + 1}`,
       name: `${i + 1}`,
     })),
+    initialSelection: [],
     finalSelections: null,
     selectedPds: null,
     selectedSphOD: null,
@@ -158,7 +174,11 @@ export const useGlassesStore = defineStore("glassesStore", {
   }),
   actions: {
     setSelectedOptionId(step, optionId) {
-      this.selectedOptionId[step] = optionId;     
+      this.selectedOptionId[step] = optionId;
+
+      if (this.initialSelection.length === 0) {
+        this.initialSelection = this.currentOptions.find(option => option.id === optionId);
+      }
     },
     saveSelections() {
       this.finalSelections = {
@@ -182,6 +202,7 @@ export const useGlassesStore = defineStore("glassesStore", {
       this.selectedAxisOD = null;
       this.selectedAxisOS = null;
       this.finalSelections = null;
+      this.initialSelection = [];
       this.selectedOptionId = {};
       this.currentTitle = "Choose the type of glasses that you would like";
       this.currentOptions = [
@@ -252,6 +273,9 @@ export const useGlassesStore = defineStore("glassesStore", {
     setOptions(options) {
       this.history.push([...this.currentOptions]);
       this.currentOptions = options;
+      if (this.currentTitle === "Choose the type of glasses that you would like") {
+        this.initialSelection = this.selectedOptions;
+      }
     },
     setTitle(title) {
       this.titleHistory.push(this.currentTitle);

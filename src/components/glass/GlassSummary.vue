@@ -4,6 +4,7 @@
     <div class="flex flex-row">
       <div class="flex font-semibold">Lens:&nbsp;</div>
       <div class="flex">
+        {{ glassesStore.initialSelection.map((opt) => opt.label).join(", ") }}, &nbsp;        
         {{ glassesStore.selectedOptions.map((opt) => opt.label).join(", ") }}
       </div>
     </div>

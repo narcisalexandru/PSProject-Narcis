@@ -36,6 +36,9 @@
               <GlassSummary />
             </div>
           </div>
+          <div v-else-if="glassesStore.currentTitle === 'Choose Blue Light Blocking Option'">
+            <GlassBlueSelection />
+          </div>
           <div v-else>
             <div v-for="option in glassesStore.currentOptions" :key="option.id">
               <Button
@@ -71,10 +74,15 @@
 import { useGlassesStore } from "@/store/glassesStore";
 import GlassSummary from "./GlassSummary.vue";
 import GlassConfigurationPds from "./GlassConfigurationPds.vue";
+import GlassBlueSelection from "./GlassBlueSelection.vue";
 
 const glassesStore = useGlassesStore();
 
 function handleOptionSelect(option) {
+  if (glassesStore.initialSelection.length === 0) {
+    glassesStore.initialSelection.push(option);
+  }
+
   glassesStore.addOption(option);
   glassesStore.setSelectedOptionId(glassesStore.currentTitle, option.id);
 
@@ -90,6 +98,16 @@ function handleOptionSelect(option) {
   } else if (option.next === "progressives_pds" || option.next === "readers_pds") {
     glassesStore.setOptions(glassesStore.optionSteps[option.next]);
     glassesStore.setTitle(glassesStore.titles[option.next]);
+  } else if (option.id === "blue_light_blocking") {
+    if (
+      glassesStore.initialSelection.some((sel) => sel.id === "progressives")
+    ) {
+      glassesStore.setOptions(glassesStore.optionSteps.blue_light_blocking_options);
+      glassesStore.setTitle("Choose Blue Light Blocking Option");
+    } else {
+      glassesStore.saveSelections();
+      glassesStore.setFinalPageOptions();
+    }
   } else if (option.next) {
     glassesStore.setOptions(glassesStore.optionSteps[option.next]);
     glassesStore.setTitle(glassesStore.titles[option.next]);
