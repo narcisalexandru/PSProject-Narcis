@@ -78,6 +78,9 @@ function handleOptionSelect(option) {
   glassesStore.addOption(option);
   glassesStore.setSelectedOptionId(glassesStore.currentTitle, option.id);
 
+  glassesStore.history.push([...glassesStore.currentOptions]);
+  glassesStore.titleHistory.push(glassesStore.currentTitle);
+
   if (option.id === "progressives") {
     glassesStore.setOptions(glassesStore.optionSteps.progressives_options);
     glassesStore.setTitle(glassesStore.titles.progressives_options);
@@ -96,13 +99,11 @@ function handleOptionSelect(option) {
   }
 }
 
+
 function handleBack() {
   if (glassesStore.history.length) {
     const previousOptions = glassesStore.history.pop();
     const previousTitle = glassesStore.titleHistory.pop();
-    if (glassesStore.selectedOptionId[previousTitle]) {
-      glassesStore.selectedOptionId[previousTitle] = glassesStore.selectedOptionId[previousTitle];
-    }
     glassesStore.currentOptions = previousOptions;
     glassesStore.currentTitle = previousTitle;
     glassesStore.selectedOptions = glassesStore.selectedOptions.slice(0, -1);
@@ -110,6 +111,7 @@ function handleBack() {
     glassesStore.visible = false;
   }
 }
+
 
 </script>
 
