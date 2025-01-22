@@ -2,10 +2,14 @@
   <div class="flex flex-column mb-8">
     <div class="font-bold text-2xl mb-3">Time to review</div>
     <div class="flex flex-row">
-      <div class="flex font-semibold">Lens:</div>
+      <div class="flex font-semibold">Lens:&nbsp;</div>
       <div class="flex">
         {{ glassesStore.selectedOptions.map((opt) => opt.label).join(", ") }}
       </div>
+    </div>
+    <div class="flex flex-row">
+      <div class="flex font-semibold">Selected PD:&nbsp;</div>
+      {{ glassesStore.selectedPds?.name || "0" }}
     </div>
   </div>
 
