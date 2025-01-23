@@ -2,16 +2,15 @@
   <Dialog
     v-model:visible="glassesStore.visible"
     modal
-    header=" "
-    class="w-full h-full"
+    class="w-full h-full p-dialog-maximized"
   >
-    <template #header>
-      <div class="flex align-items-center">
-        <Button label="Back" @click="handleBack" severity="contrast" />
-      </div>
-    </template>
-    <div class="flex">
-      <div class="w-6 p-8">
+      <template #header>
+        <div class="flex align-items-center">
+          <Button label="Back" @click="handleBack" severity="contrast" />
+        </div>
+      </template>
+    <div class="flex align-items-center">
+      <div class="w-5 p-8">
         <div class="flex justify-content-center font-bold text-3xl">KITS</div>
         <img src="/81000005390_IMG.webp" class="w-max-full w-full" />
         <div class="flex flex-row justify-content-center">
@@ -23,9 +22,9 @@
           <div class="flex font-bold text-xl">$28</div>
         </div>
       </div>
-      <div class="w-6">
-        <div class="flex flex-column gap-2">
-          <h1 class="font-bold mb-6">{{ glassesStore.currentTitle }}</h1>
+      <div class="w-7 h-full border-left-1 border-400 p-8">
+        <div class="flex flex-column">
+          <h1 class="font-bold mb-8 ml-2">{{ glassesStore.currentTitle }}</h1>
           <div
             v-if="glassesStore.currentTitle === 'Enter your pupilary distance'"
           >
@@ -47,7 +46,7 @@
                 >
                 <div
                   :class="{ 'selected-option': glassesStore.selectedOptionId[glassesStore.currentTitle] === option.id }"
-                  class="border-round w-full shadow-4 flex align-items-center justify-content-start"
+                  class="border-round w-full shadow-4 flex align-items-center justify-content-start h-7rem"
                 >
                   <div class="mx-6 my-4 w-2">
                     <img :src="option.image" class="w-max-full w-full flex" />
@@ -58,6 +57,9 @@
                     </div>
                     <div class="w-full flex text-left text-700">
                       {{ option.description }}
+                    </div>
+                    <div class="w-full flex text-left">
+
                     </div>
                   </div>
                 </div>
@@ -75,6 +77,8 @@ import { useGlassesStore } from "@/store/glassesStore";
 import GlassSummary from "./GlassSummary.vue";
 import GlassConfigurationPds from "./GlassConfigurationPds.vue";
 import GlassBlueSelection from "./GlassBlueSelection.vue";
+
+const maximize = true;
 
 const glassesStore = useGlassesStore();
 
